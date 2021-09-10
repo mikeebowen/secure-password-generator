@@ -1,13 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Popup</title>
+  <title>Secure Password Generator</title>
   <link rel="stylesheet" type="text/css" href="../styles/popup.css">
 </head>
 <body>
-
-  <h1>Popup</h1>
+  <div class="container">
+    <div class="title">
+      <h1>Secure Password Generator</h1>
+    </div>
+    <div class="form-row">
+      <form id="pw-form">
+        <input type="checkbox" id="numbers" name="numbers" checked>
+        <label for="numbers">Include Numbers</label>
+        <input type="checkbox" id="special-chars" name="special-chars" checked>
+        <label for="special-chars" class="tooltip">
+          <span class="tooltiptext">
+            !@#$%^&*
+          </span>
+          Include Special Characters<sup>*</sup>
+        </label>
+        <input type="number" name="count" id="count" min="6" max="999" value="12">
+        <label for="count">Length</label>
+        <button class="btn" type="submit">Create</button>
+      </form>
+    </div>
+    <div class="pw-row">
+      <span id="pw" class="pw-span"></span>
+      <span id="copy" class="copy-span">⎘</span>
+    </div>
+  </div>
 
   <script src="../scripts/popup.js"></script>
 </body>
