@@ -17,7 +17,7 @@ if (copy) {
   }
 }
 if (form) {
-  form.onsubmit = function (e: Event): void {
+  form.onclick = function (e: Event): void {
     e.preventDefault();
     const specialChars = '!@#$%^&*';
     const numbers = '0123456789';
@@ -25,7 +25,6 @@ if (form) {
     let pw = '';
 
     const numInput = document.getElementById('numbers') as HTMLInputElement;
-    const addSpecialChars = document.getElementById('special-chars') as HTMLInputElement;
     const count = document.getElementById('count') as HTMLInputElement;
     const outputSpan: HTMLElement | null = document.getElementById('pw');
     let rounds: number = parseInt(count.value);
@@ -34,15 +33,23 @@ if (form) {
     if (numInput.checked) {
       chars += numbers;
     }
-    if (addSpecialChars.checked) {
-      chars += specialChars;
-    }
+
+    const specials: NodeListOf<HTMLInputElement> = document.getElementsByName('special-chars') as NodeListOf<HTMLInputElement>;
+    let xtraChars: string[] = [];
+
+    specials.forEach(s => {
+      if (s.checked){
+        xtraChars.push(s.value);
+      }
+    });
+
+    chars += xtraChars.join('');
 
     for (let i = 0; i < rounds; i++) {
       pw += chars.charAt(Math.floor(Math.random() * chars.length));
     }
 
-    if (numInput.checked || addSpecialChars.checked) {
+    if (numInput.checked || specials.length) {
       const strArr: string[] = pw.split('');
       let numIndex: number = Math.floor(Math.random() * strArr.length);
       let specialIndex: number = Math.floor(Math.random() * strArr.length);
@@ -55,9 +62,8 @@ if (form) {
       if (numInput.checked) {
         strArr[numIndex] = numbers[Math.floor(Math.random() * numbers.length)];
       }
-
-      if (addSpecialChars.checked) {
-        strArr[specialIndex] = specialChars[Math.floor(Math.random() * specialChars.length)];
+      if (xtraChars.length) {
+        strArr[specialIndex] = xtraChars[Math.floor(Math.random() * xtraChars.length)];
       }
 
       pw = strArr.join('');

@@ -11,19 +11,35 @@
       <h1>Secure Password Generator</h1>
     </div>
     <div class="form-row">
-      <form id="pw-form">
-        <input type="checkbox" id="numbers" name="numbers" checked>
-        <label for="numbers">Include Numbers</label>
-        <input type="checkbox" id="special-chars" name="special-chars" checked>
-        <label for="special-chars" class="tooltip">
-          <span class="tooltiptext">
-            !@#$%^&*
-          </span>
-          Include Special Characters<sup>*</sup>
-        </label>
-        <input type="number" name="count" id="count" min="6" max="999" value="12">
-        <label for="count">Length</label>
-        <button class="btn" type="submit">Create</button>
+      <form>
+        <div>
+          <input type="checkbox" id="numbers" name="numbers" checked>
+          <label for="numbers">Include Numbers</label>
+        </div>
+        <div>
+          <fieldset>
+            <legend>Select special characters</legend>
+            <input type="checkbox" name="special-chars" value="+" checked>+<br>
+            <input type="checkbox" name="special-chars" value="=" checked>=<br>
+            <input type="checkbox" name="special-chars" value="!" checked>!<br>
+            <input type="checkbox" name="special-chars" value="@" checked>@<br>
+            <input type="checkbox" name="special-chars" value="#" checked>#<br>
+            <input type="checkbox" name="special-chars" value="$" checked>$<br>
+            <input type="checkbox" name="special-chars" value="%" checked>%<br>
+            <input type="checkbox" name="special-chars" value="^" checked>^<br>
+            <input type="checkbox" name="special-chars" value="&" checked>&<br>
+            <input type="checkbox" name="special-chars" value="*" checked>*<br>
+            <input type="checkbox" name="special-chars" value="_" checked>_<br>
+            <input type="checkbox" name="special-chars" value="-" checked>-<br>
+          </fieldset>
+        </div>
+        <div>
+          <input type="number" name="count" id="count" min="6" max="999" value="12">
+          <label for="count">Length</label>
+        </div>
+        <div>
+          <button class="btn" type="submit" id="pw-form">Create</button>
+        </div>
       </form>
     </div>
     <div class="pw-row">

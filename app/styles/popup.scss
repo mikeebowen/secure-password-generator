@@ -8,11 +8,39 @@
   grid-column-end: 3;
 
   input {
-    margin-left: 15px;
-
     &[type=number]::-webkit-inner-spin-button,
     &[type=number]::-webkit-outer-spin-button {
       opacity: 1;
+    }
+  }
+
+  fieldset {
+    input {
+      margin-left: 15px;
+    }
+  }
+
+  form {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto;
+
+    div {
+      width: max-content;
+      padding-bottom: 10px;
+      grid-column-start: 1;
+      grid-column-end: 4;
+
+      &:last-child {
+        grid-column-start: 2;
+        grid-column-end: 4;
+      }
+    }
+
+    fieldset {
+      display: grid;
+      grid-template-columns: auto auto auto auto auto auto auto auto;
+      justify-content: flex-start;
     }
   }
 }
@@ -21,9 +49,7 @@
   grid-area: btn-row;
   grid-column-start: 2;
   grid-column-end: 3;
-  padding-top: 10px;
   width: 100%;
-  margin-top: 15px;
   display: grid;
   grid-template-areas: 'pw cp';
 
@@ -55,54 +81,5 @@
 
   .title {
     text-align: center;
-  }
-
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-
-    &:hover {
-      .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-      }
-    }
-
-    .tooltiptext {
-      visibility: hidden;
-      width: 120px;
-      background-color: #555;
-      color: #fff;
-      text-align: center;
-      padding: 5px 0;
-      border-radius: 6px;
-
-      /* Position the tooltip text */
-      position: absolute;
-      z-index: 1;
-      bottom: 125%;
-      left: 50%;
-      margin-left: -60px;
-
-      /* Fade in tooltip */
-      opacity: 0;
-      transition: opacity 0.3s;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: #555 transparent transparent transparent;
-      }
-    }
-  }
-
-  .btn {
-    margin-left: 1rem;
   }
 }
